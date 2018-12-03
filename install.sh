@@ -1,1 +1,2 @@
-sudo bash install/pi/install.sh
+cd install/pi
+sudo bash install.sh
