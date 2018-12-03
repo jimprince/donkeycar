@@ -45,3 +45,36 @@ pip install pandas #also installs numpy
 
 
 pip install tensorflow==1.9
+
+#setup Wifi Hotspot
+sudo apt-get install hostapd -y
+sudo apt-get install dnsmasq -y
+sudo systemctl disable hostapd
+sudo systemctl disable dnsmasq
+cp hostapd.conf /etc/hostapd/hostapd.conf
+sed -i 's/\#DAEMON_CONF=""/DAEMON_CONF="\/etc\/hostapd\/hostapd.conf"/g' /etc/default/hostapd
+sed -i 's/DAEMON_OPTS=""/#DAEMON_OPTS=""/g' /etc/default/hostapd
+
+
+cat dnsmasq.conf >> /etc/dnsmasq.conf
+cp /etc/network/interfaces /etc/network/interfaces.backup
+cp interfaces /etc/network/interfaces
+
+#IP forwarding
+sed -i 's/\#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
+echo "nohook wpa_supplicant" >> /etc/dhcpcd.conf
+
+#setup service
+sudo cp autohotspot.service /etc/systemd/system/autohotspot.service
+sudo systemctl enable autohotspot.service
+
+#uncomment to upgrade IW (not present in some old installations)
+#sudo apt-get install iw
+
+#Autohotspot Script
+sudo cp autohotspotN /usr/bin/autohotspotN
+sudo chmod +x /usr/bin/autohotspotN
+
+
+#setup Django Server
+
