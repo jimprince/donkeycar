@@ -75,6 +75,9 @@ sudo systemctl enable autohotspot.service
 sudo cp autohotspotN /usr/bin/autohotspotN
 sudo chmod +x /usr/bin/autohotspotN
 
+#setup Donkeycar
+sudo pip install -e ../..
+donkey createcar ~/mycar
 
-#setup Django Server
+#setup Tornado Server
 
