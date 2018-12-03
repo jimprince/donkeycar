@@ -2,9 +2,10 @@
 sudo apt-get install pip3-python -y
 
 #standard updates (5 min)
-sudo apt update -y
-sudo apt upgrade -y
-sudo rpi-update -y
+# already done by remote script
+# sudo apt update -y
+# sudo apt upgrade -y
+# sudo rpi-update -y
 
 #helpful libraries (2 min)
 sudo apt install build-essential python3-dev python3-distlib python3-setuptools  python3-pip python3-wheel -y
@@ -37,14 +38,11 @@ echo '#start env' >> ~/.bashrc
 echo 'source ~/env/bin/activate' >> ~/.bashrc
 source ~/env/bin/activate
 
-
 #make sure the virtual environment is active
 source ~/env/bin/activate
 
 # install pandas and numpy
 pip install pandas #also installs numpy
-
-
 pip install tensorflow==1.9
 
 #setup Wifi Hotspot
@@ -77,8 +75,8 @@ sudo cp autohotspotN /usr/bin/autohotspotN
 sudo chmod +x /usr/bin/autohotspotN
 
 #setup Donkeycar
-cd ../..
-sudo pip3 install -e .
+cd ~/donkeycar
+sudo pip install -e .
 donkey createcar ~/mycar
 
 #setup Tornado Server
