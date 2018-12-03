@@ -1,4 +1,5 @@
 # Script to install everything needed for donkeycar except the donkeycar library
+sudo apt-get install pip3-python -y
 
 #standard updates (5 min)
 sudo apt update -y
@@ -76,7 +77,8 @@ sudo cp autohotspotN /usr/bin/autohotspotN
 sudo chmod +x /usr/bin/autohotspotN
 
 #setup Donkeycar
-sudo pip install -e ../..
+cd ../..
+sudo pip3 install -e .
 donkey createcar ~/mycar
 
 #setup Tornado Server
