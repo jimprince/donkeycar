@@ -1,11 +1,11 @@
 # Script to install everything needed for donkeycar except the donkeycar library
 sudo apt-get install pip3-python -y
 
-#standard updates (5 min)
-# already done by remote script
-# sudo apt update -y
-# sudo apt upgrade -y
-# sudo rpi-update -y
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install git -y
+cd ~/
+git clone -b brad_dev https://github.com/jimprince/donkeycar.git
 
 #helpful libraries (2 min)
 sudo apt install build-essential python3-dev python3-distlib python3-setuptools  python3-pip python3-wheel -y
